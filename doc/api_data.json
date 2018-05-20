@@ -1,0 +1,1424 @@
+[
+  {
+    "type": "delete",
+    "url": "/api/v1/admin/:id",
+    "title": "Admin Deletion",
+    "version": "0.1.0",
+    "name": "AdminDeletion",
+    "group": "Admin",
+    "permission": [
+      {
+        "name": "Admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID of the Admin to be deleted. (URL Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Admin deleted successfully.\"\n   status: 200,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (403)",
+          "content": "{\n   error: true,\n   message: \"You are not eligible to delete this Admin.\",\n   status: 403,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (404):",
+          "content": "{\n   error: true,\n   message: \"Admin Not Found.\",\n   status: 404,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/admin.js",
+    "groupTitle": "Admin"
+  },
+  {
+    "type": "post",
+    "url": "/api/v1/admin/login",
+    "title": "Admin Login",
+    "version": "0.1.0",
+    "name": "AdminLogin",
+    "group": "Admin",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>Username of Admin. (Body Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Password of Admin. (Body Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Login Successful.\"\n   status: 200,\n   data: {\n     token: \"jsonwebtoken\"\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (422)",
+          "content": "{\n   error: true,\n   message: \"Invalid Password!\",\n   status: 422,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (404):",
+          "content": "{\n   error: true,\n   message: \"Admin Not Found.\",\n   status: 404,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/admin.js",
+    "groupTitle": "Admin"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/admin/logout",
+    "title": "Admin Logout",
+    "version": "0.1.0",
+    "name": "AdminLogout",
+    "group": "Admin",
+    "permission": [
+      {
+        "name": "Admin"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Logout Successful.\"\n   status: 200,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/admin.js",
+    "groupTitle": "Admin"
+  },
+  {
+    "type": "post",
+    "url": "/api/v1/admin/create-admin",
+    "title": "Admin Registration",
+    "version": "0.1.0",
+    "name": "AdminRegistration",
+    "group": "Admin",
+    "permission": [
+      {
+        "name": "Admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>Username of Admin. (Body Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Password of Admin. (Body Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Admin created successfully.\"\n   status: 200,\n   data: {..}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (400)",
+          "content": "{\n   error: true,\n   message: \"Some credentials are missing.\",\n   status: 400,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/admin.js",
+    "groupTitle": "Admin"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/admin",
+    "title": "Get Admin Details",
+    "version": "0.1.0",
+    "name": "GetAdminDetails",
+    "group": "Admin",
+    "permission": [
+      {
+        "name": "Admin"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Admin Data.\"\n   status: 200,\n   data: {..}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/admin.js",
+    "groupTitle": "Admin",
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/admin/:id",
+    "title": "Get Admin Details By ID",
+    "version": "0.1.0",
+    "name": "GetAdminDetailsById",
+    "group": "Admin",
+    "permission": [
+      {
+        "name": "Admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Admin ID. (URL Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Admin Details.\"\n   status: 200,\n   data: {..}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (403)",
+          "content": "{\n   error: true,\n   message: \"You are not eligible to view details of this Admin\",\n   status: 403,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (404):",
+          "content": "{\n   error: true,\n   message: \"Admin Not Found.\",\n   status: 404,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/admin.js",
+    "groupTitle": "Admin"
+  },
+  {
+    "type": "post",
+    "url": "/api/v1/cart",
+    "title": "Add Items to Cart",
+    "version": "0.0.1",
+    "group": "Cart",
+    "name": "AddItemsToCart",
+    "permission": [
+      {
+        "name": "Customer"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String[]",
+            "optional": false,
+            "field": "productIds",
+            "description": "<p>An array of string, where each string denotes a Product ID. (Body Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Items added to cart.\"\n   status: 200,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (400):",
+          "content": "{\n   error: true,\n   message: \"Invalid Product Id.\"\n   status: 400,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/cart.js",
+    "groupTitle": "Cart"
+  },
+  {
+    "type": "delete",
+    "url": "/api/v1/cart",
+    "title": "Delete Products from cart",
+    "version": "0.0.1",
+    "group": "Cart",
+    "name": "DeleteProductFromCart",
+    "permission": [
+      {
+        "name": "Customer"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String[]",
+            "optional": false,
+            "field": "productIds",
+            "description": "<p>An array of string, where each string denotes a Product ID. (Body Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Item deleted from cart successfully.\"\n   status: 200,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (400):",
+          "content": "{\n   error: true,\n   message: \"Not Product IDs provided to delete.\"\n   status: 400,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (404):",
+          "content": "{\n   error: true,\n   message: \"Item not found in cart.\",\n   status: 404,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/cart.js",
+    "groupTitle": "Cart"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/cart",
+    "title": "Get Items from Customer's Cart",
+    "version": "0.0.1",
+    "group": "Cart",
+    "name": "GetCartItems",
+    "permission": [
+      {
+        "name": "Customer"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Items Found.\"\n   status: 200,\n   data: [{..},{..},...,{..}]\n}",
+          "type": "json"
+        },
+        {
+          "title": "Success Response (204):",
+          "content": "{\n   error: false,\n   message: \"No item in cart.\"\n   status: 204,\n   data: []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/cart.js",
+    "groupTitle": "Cart",
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "put",
+    "url": "/api/v1/cart/:productId/update-quantity/:quantity",
+    "title": "Update quantity of a Product in Cart",
+    "version": "0.0.1",
+    "group": "Cart",
+    "name": "UpdateQuantityInCart",
+    "permission": [
+      {
+        "name": "Customer"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "productId",
+            "description": "<p>ID of the Product. (URL Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "quantity",
+            "description": "<p>Updated quantity of the Product. (URL Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Item updated in cart successfully.\"\n   status: 200,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (404):",
+          "content": "{\n   error: true,\n   message: \"Item not found in cart.\",\n   status: 404,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/cart.js",
+    "groupTitle": "Cart"
+  },
+  {
+    "type": "post",
+    "url": "/api/v1/customers/login",
+    "title": "Customer Login",
+    "version": "0.0.1",
+    "group": "Customers",
+    "name": "CustomerLogin",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>Customer's username. (Body Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Customer's password. (Body Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Login Successful.\"\n   status: 200,\n   data: {\n     token: \"jsonwebtoken\"\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (422):",
+          "content": "{\n   error: true,\n   message: \"Invalid Password!\",\n   status: 422,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (404):",
+          "content": "{\n   error: true,\n   message: \"Customer Not Found.\",\n   status: 404,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/customers.js",
+    "groupTitle": "Customers"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/customers/logout",
+    "title": "Customer Logout",
+    "version": "0.0.1",
+    "group": "Customers",
+    "name": "CustomerLogout",
+    "permission": [
+      {
+        "name": "Customer"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Logout Successful.\"\n   status: 200,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/customers.js",
+    "groupTitle": "Customers"
+  },
+  {
+    "type": "post",
+    "url": "/api/v1/customers/signup",
+    "title": "Customer Sign Up",
+    "version": "0.0.1",
+    "group": "Customers",
+    "name": "CustomerSignup",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Customer's name. (Body Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Customer's email address. (Body Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>Customer's username. (Body Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Customer's password. (Body Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Registration Successful.\"\n   status: 200,\n   data: {\n     token: \"jsonwebtoken\"\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/customers.js",
+    "groupTitle": "Customers",
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (422):",
+          "content": "{\n   error: true,\n   message: \"Data Validation Failed. Please Check The Data.\",\n   status: 422,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "delete",
+    "url": "/api/v1/customers/",
+    "title": "Delete Customer Account",
+    "version": "0.0.1",
+    "group": "Customers",
+    "name": "DeleteCustomer",
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Customer Deleted Successfully.\"\n   status: 200,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/customers.js",
+    "groupTitle": "Customers",
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/customers/:id",
+    "title": "Get Details of a Customer by ID",
+    "version": "0.0.1",
+    "group": "Customers",
+    "name": "GetCustomerById",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Customer ID. (URL Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Customer Found.\"\n   status: 200,\n   data: {\n     name: \"string\"\n     orders: string[]\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/customers.js",
+    "groupTitle": "Customers",
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (404):",
+          "content": "{\n   error: true,\n   message: \"Customer Not Found.\",\n   status: 404,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/customers/me",
+    "title": "Get Details of the Logged In Customer",
+    "version": "0.0.1",
+    "group": "Customers",
+    "name": "GetCustomerDetails",
+    "permission": [
+      {
+        "name": "Customer"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Product ID. (URL Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Customer Details.\"\n   status: 200,\n   data: {..}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/customers.js",
+    "groupTitle": "Customers"
+  },
+  {
+    "type": "post",
+    "url": "/api/v1/orders",
+    "title": "Create New Order",
+    "version": "0.0.1",
+    "group": "Orders",
+    "name": "CreateNewOrder",
+    "permission": [
+      {
+        "name": "Customer"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Object[]",
+            "optional": false,
+            "field": "products",
+            "description": "<p>List of objects containing productId and quantity. (Body Parameter)</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Order Request Example:",
+          "content": "[\n   { producId: \"someid\", quantity: 1 },\n   { productId: \"otherid\", quantiy: 3 }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Orders successfully placed.\"\n   status: 200,\n   data: {\n     orderId: \"orderid\"\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/orders.js",
+    "groupTitle": "Orders",
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (422):",
+          "content": "{\n   error: true,\n   message: \"Data Validation Failed. Please Check The Data.\",\n   status: 422,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "delete",
+    "url": "/api/v1/orders/:id",
+    "title": "Delete Order",
+    "version": "0.0.1",
+    "group": "Orders",
+    "name": "DeleteOrder",
+    "permission": [
+      {
+        "name": "Customer"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID of the order to be deleted (URL Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Orders deleted successfully.\"\n   status: 200,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/orders.js",
+    "groupTitle": "Orders",
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (404):",
+          "content": "{\n   error: true,\n   message: \"Order Not Found.\",\n   status: 404,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/orders/:id",
+    "title": "Get Order of the logged in Customer by ID",
+    "version": "0.0.1",
+    "group": "Orders",
+    "name": "GetOrderById",
+    "permission": [
+      {
+        "name": "Customer"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Product ID. (URL Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Orders details found.\"\n   status: 200,\n   data: {..}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/orders.js",
+    "groupTitle": "Orders",
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (404):",
+          "content": "{\n   error: true,\n   message: \"Order Not Found.\",\n   status: 404,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/orders/",
+    "title": "Get Orders of the Logged In Customer",
+    "version": "0.0.1",
+    "group": "Orders",
+    "name": "GetOrders",
+    "permission": [
+      {
+        "name": "Customer"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Product ID. (URL Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Orders Found.\"\n   status: 200,\n   data: [{..},{..},...,{..}]\n}",
+          "type": "json"
+        },
+        {
+          "title": "Success Response (204):",
+          "content": "{\n   error: false,\n   message: \"No orders found.\"\n   status: 204,\n   data: []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/orders.js",
+    "groupTitle": "Orders",
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
+    "url": "/api/v1/products/:id/add-to-cart",
+    "title": "Add Product To Cart",
+    "version": "0.0.1",
+    "group": "Products",
+    "name": "AddProductToCart",
+    "permission": [
+      {
+        "name": "Customer"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Product ID. (URL Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Item is added to cart.\"\n   status: 200,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/products.js",
+    "groupTitle": "Products",
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
+    "url": "/api/v1/products/",
+    "title": "Create A Product",
+    "version": "0.0.1",
+    "group": "Products",
+    "name": "CreateProduct",
+    "permission": [
+      {
+        "name": "Admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Product Name. (Body Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "description",
+            "description": "<p>Product Description. (Body Parameters)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>Product Category. (Body Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "price",
+            "description": "<p>Product Price. (Body Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "stock",
+            "defaultValue": "1",
+            "description": "<p>Quantity of the product available in stock. (Body Parameter)</p>"
+          }
+        ],
+        "Book": [
+          {
+            "group": "Book",
+            "type": "String",
+            "optional": false,
+            "field": "author",
+            "description": "<p>Author of the book. (Body Parameter)</p>"
+          },
+          {
+            "group": "Book",
+            "type": "String",
+            "optional": true,
+            "field": "publisher",
+            "description": "<p>Publisher of the book. (Body Parameter)</p>"
+          },
+          {
+            "group": "Book",
+            "type": "Number",
+            "optional": true,
+            "field": "pages",
+            "description": "<p>Number of Pages in the book. (Body Parameter)</p>"
+          },
+          {
+            "group": "Book",
+            "type": "String",
+            "optional": true,
+            "field": "language",
+            "description": "<p>Language the book is written in. (Body Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Product added successfully.\"\n   status: 200,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/products.js",
+    "groupTitle": "Products",
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (422):",
+          "content": "{\n   error: true,\n   message: \"Data Validation Failed. Please Check The Data.\",\n   status: 422,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "delete",
+    "url": "/api/v1/products/:id",
+    "title": "Delete Product",
+    "version": "0.0.1",
+    "group": "Products",
+    "name": "DeleteProduct",
+    "permission": [
+      {
+        "name": "Admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Product ID. (URL Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Product deleted successfully.\"\n   status: 200,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/products.js",
+    "groupTitle": "Products",
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (404):",
+          "content": "{\n   error: true,\n   message: \"Product Not Found.\",\n   status: 404,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/products/",
+    "title": "Get All Products",
+    "version": "0.0.1",
+    "group": "Products",
+    "name": "GetAllProducts",
+    "permission": [
+      {
+        "name": "none"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "type",
+            "defaultValue": "all",
+            "description": "<p>Filter products by category like 'book', 'laptop', etc. (Query Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "search",
+            "description": "<p>Search for products containing the term. (Query Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "minPrice",
+            "defaultValue": "0",
+            "description": "<p>Filter by Minimum Price. Products having price greater than 'minPrice' will be displayed. (Query Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "maxPrice",
+            "defaultValue": "Infinity",
+            "description": "<p>Filter by Minimum Price. Products having price lesser than 'maxPrice' will be displayed. (Query Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "skip",
+            "defaultValue": "0",
+            "description": "<p>Skip the number of elements in the product list. (Query Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "limit",
+            "defaultValue": "10",
+            "description": "<p>Show only the number of elements provided in the 'limit'. (Query Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": true,
+            "field": "availability",
+            "description": "<p>'Availability' denotes whether to show products in stock or not. (Query Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Products Found.\"\n   status: 200,\n   data: [{..},{..},...,{..}]\n}",
+          "type": "json"
+        },
+        {
+          "title": "Success Response (204):",
+          "content": "{\n   error: false,\n   message: \"No products Found.\"\n   status: 204,\n   data: []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/products.js",
+    "groupTitle": "Products",
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/products/:id",
+    "title": "Get A Single Product By Id",
+    "version": "0.0.1",
+    "group": "Products",
+    "name": "GetProductById",
+    "permission": [
+      {
+        "name": "none"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Product ID. (URL Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Product details found.\"\n   status: 200,\n   data: {..}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/products.js",
+    "groupTitle": "Products",
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (404):",
+          "content": "{\n   error: true,\n   message: \"Product Not Found.\",\n   status: 404,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "put",
+    "url": "/api/v1/products/:id",
+    "title": "Update Product Details",
+    "version": "0.0.1",
+    "group": "Products",
+    "name": "UpdateProduct",
+    "permission": [
+      {
+        "name": "Admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Product ID. (URL Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "description",
+            "description": "<p>Product Description. (Body Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "price",
+            "description": "<p>Product Price. (Body Parameter)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "stock",
+            "description": "<p>Quantity of the product available in stock. (Body Parameter)</p>"
+          }
+        ],
+        "Book": [
+          {
+            "group": "Book",
+            "type": "String",
+            "optional": true,
+            "field": "author",
+            "description": "<p>Author of the book. (Body Parameter)</p>"
+          },
+          {
+            "group": "Book",
+            "type": "String",
+            "optional": true,
+            "field": "publisher",
+            "description": "<p>Publisher of the book. (Body Parameter)</p>"
+          },
+          {
+            "group": "Book",
+            "type": "Number",
+            "optional": true,
+            "field": "pages",
+            "description": "<p>Number of Pages in the book. (Body Parameter)</p>"
+          },
+          {
+            "group": "Book",
+            "type": "String",
+            "optional": true,
+            "field": "language",
+            "description": "<p>Language the book is written in. (Body Parameter)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response (200):",
+          "content": "{\n   error: false,\n   message: \"Product updated successfully.\"\n   status: 200,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/products.js",
+    "groupTitle": "Products",
+    "error": {
+      "examples": [
+        {
+          "title": "Error Response (404):",
+          "content": "{\n   error: true,\n   message: \"Product Not Found.\",\n   status: 404,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (422):",
+          "content": "{\n   error: true,\n   message: \"Data Validation Failed. Please Check The Data.\",\n   status: 422,\n   data: null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Response (500):",
+          "content": "{\n   error: true,\n   message: \"Error occurred.\",\n   status: 500,\n   data: null\n}",
+          "type": "json"
+        }
+      ]
+    }
+  }
+]
