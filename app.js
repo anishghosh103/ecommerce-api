@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const fs = require('fs');
+const helmet = require('helmet');
 
 const appConfig = require('./config/app-config');
 const globalErrorMiddleware = require('./middlewares/app-error-handler');
@@ -20,6 +21,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(helmet());
 
 app.use(globalErrorMiddleware.errorHandler);
 app.use(routeLoggerMiddleware.log);
