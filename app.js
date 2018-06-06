@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const fs = require('fs');
 const helmet = require('helmet');
+const path = require('path');
 
 const appConfig = require('./config/app-config');
 const globalErrorMiddleware = require('./middlewares/app-error-handler');
@@ -42,6 +43,11 @@ app.use(baseUrl + '/admin', adminRoutes);
 
 app.use(baseUrl + '/orders', authMiddleware.customerAuthenticated, orderRoutes);
 app.use(baseUrl + '/cart', authMiddleware.customerAuthenticated, cartRoutes);
+
+app.use('/apidoc', express.static(path.join(__dirname, 'doc')));
+app.get('/apidoc', (req, res) => {
+  res.sendFile(path.join(__dirname, 'doc/index.html'));
+});
 
 app.use('*', globalErrorMiddleware.notFoundHandler);
 
