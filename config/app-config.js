@@ -1,6 +1,6 @@
 
 module.exports = {
-  port: 3000,
+  port: 3001,
   allowedCorsOrigin: '*',
   env: 'dev',
   db: {
