@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const shortid = require('shortid');
 
 let AdminSchema = new mongoose.Schema({
